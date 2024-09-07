@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package task;
+
+option go_package = "./tasks;task";
+
+service ProducerService {
+    rpc ProduceTask (TaskRequest) returns (TaskResponse);
+}
+
+service ConsumerService {
+    rpc ConsumeTask (TaskRequest) returns (TaskResponse);
+}
+
+message TaskRequest {
+    int32 task_type = 1;
+    int32 task_value = 2;
+}
+
+message TaskResponse {
+    bool success = 1;
+}
